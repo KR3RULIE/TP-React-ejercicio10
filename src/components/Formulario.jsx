@@ -1,7 +1,20 @@
 import { Form, Button } from "react-bootstrap";
 import Card from "./Card";
+import { useState, useEffect } from "react";
 
 const Formulario = () => {
+  const [nombre, setNombre] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [genero, setGenero] = useState("");
+
+  const peliculasLocalstorage =
+    JSON.parse(localStorage.getItem("arrayPeliculas")) || [];
+  const [peliculas, setPeliculas] = useState(peliculasLocalstorage);
+
+  useEffect(() => {
+    localStorage.setItem("arrayPeliculas", JSON.stringify(peliculas));
+  }, [peliculas]);
+
   return (
     <>
       <section className="container bg-info my-4">
@@ -15,7 +28,12 @@ const Formulario = () => {
             <Form.Label className="mt-2">
               Nombre de la pelicula: <span className="text-danger">*</span>
             </Form.Label>
-            <Form.Control type="text" placeholder="Matrix" />
+            <Form.Control
+              type="text"
+              placeholder="Matrix"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+            />
           </Form.Group>
 
           <Form.Group>
@@ -25,6 +43,8 @@ const Formulario = () => {
             <Form.Control
               type="text"
               placeholder="Neo tiene que luchar para salvar a los refugiados,etc."
+              value={descripcion}
+              onChange={(e) => setDescripcion(e.target.value)}
             />
           </Form.Group>
 
@@ -32,7 +52,12 @@ const Formulario = () => {
             <Form.Label className="mt-2">
               Genero de la pelicula: <span className="text-danger">*</span>
             </Form.Label>
-            <Form.Control type="text" placeholder="Ciencia ficción" />
+            <Form.Control
+              type="text"
+              placeholder="Ciencia ficción"
+              value={genero}
+              onChange={(e) => setGenero(e.target.value)}
+            />
           </Form.Group>
 
           <Button
