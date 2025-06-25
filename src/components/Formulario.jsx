@@ -15,6 +15,8 @@ const Formulario = () => {
     localStorage.setItem("arrayPeliculas", JSON.stringify(peliculas));
   }, [peliculas]);
 
+  
+
   return (
     <>
       <section className="container bg-info my-4">

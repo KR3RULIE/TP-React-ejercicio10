@@ -14,7 +14,7 @@ const Card = ({ peliculas }) => {
         <Container>
           <Row>
             {peliculas.map((pelicula, indice) => (
-              <ItemCard key={indice}></ItemCard>
+              <ItemCard key={indice} pelicula={pelicula}></ItemCard>
             ))}
           </Row>
         </Container>
