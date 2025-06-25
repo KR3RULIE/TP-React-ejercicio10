@@ -1,7 +1,7 @@
 import { Container, Row } from "react-bootstrap";
 import ItemCard from "./ItemCard";
 
-const Card = ({ peliculas }) => {
+const Card = ({ peliculas, borrarPelicula }) => {
   return (
     <section className="container bg-warning my-4">
       <h2 className="text-center">Peliculas guardadas</h2>
@@ -14,7 +14,12 @@ const Card = ({ peliculas }) => {
         <Container>
           <Row>
             {peliculas.map((pelicula, indice) => (
-              <ItemCard key={indice} pelicula={pelicula}></ItemCard>
+              <ItemCard
+                key={indice}
+                pelicula={pelicula}
+                borrarPelicula={borrarPelicula}
+                indice={indice}
+              ></ItemCard>
             ))}
           </Row>
         </Container>
