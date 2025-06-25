@@ -69,7 +69,7 @@ const Formulario = () => {
           </Button>
         </Form>
       </section>
-      <Card></Card>
+      <Card peliculas={peliculas}></Card>
     </>
   );
 };
